@@ -14,11 +14,11 @@
 
 | 노드명 | CPU GHz/RAM GB | 세부 정보 | 주 용도 | 도입 시기 |
 |---|---|---|---|---|
-| hep | 40x2.4GHz<br/>128GB | Intel Xeon Silver 4210R<br/>max 2.4-3.2GHz | Main services<br/>slurm control daemon<br/>login UI machine<br/>Storage 86TB(users), 146TB(cpnr) | 2021.06 |
-| mewtwo | 12x3.2GHz<br/>128GB | Intel(R) Xeon(R) CPU E5-1650 v4<br/>3.2-3.8GHz | GPU nvidia GTX-1080Ti<br/>SW raid 21TB | 2018.06 |
+| hep | 40x2.4GHz<br/>128GB | Dell PowerEdge R540<br/>Intel Xeon Silver 4210R<br/>2.4-3.2GHz | Main services<br/>slurm control daemon<br/>login UI machine<br/>Storage 86TB(users), 146TB(cpnr) | 2021.06 |
+| mewtwo | 12x3.2GHz<br/>128GB | MX-612D8A<br/>Intel(R) Xeon(R) CPU E5-1650 v4<br/>3.2-3.8GHz | GPU nvidia GTX-1080Ti<br/>SW raid 21TB | 2018.06 |
 | lapras | 128x2.9GHz<br/>256GB | AMD Ryzen Threadripper 3990X 64-Core<br/>2.9-4.3GHz | 4xGPU nvidia GTX-2080Ti<br/>liquid cooling | 2020.04 |
-| lugia | 256x2.0GHz<br/>384GB | AMD EPYC 7702 64-Core<br/>2.0-3.35GHz | multithread-intensive tasks | 2020.10 |
-| ho-oh | 64x3.0GHz<br/>128GB | AMD EPYC 7302 16-Core<br/>3.0-3.3GHz | FPGA Xilinx Alveo U200 | 2020.10 |
-| raikou | 128x2.7GHz<br/>512GB | AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
-| entei | 128x2.7GHz<br/>512GB | AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
-| suicune | 128x2.7GHz<br/>512GB | AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
+| lugia | 256x2.0GHz<br/>384GB | Dell PowerEdge R7525<br/>AMD EPYC 7702 64-Core<br/>2.0-3.35GHz | multithread-intensive tasks | 2020.10 |
+| ho-oh | 64x3.0GHz<br/>128GB | Dell PowerEdge R7525<br/>AMD EPYC 7302 16-Core<br/>3.0-3.3GHz | FPGA Xilinx Alveo U200 | 2020.10 |
+| raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
+| entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
+| suicune | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
