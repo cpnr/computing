@@ -16,9 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          TEXT=":tada: Update in issue at CPNR-computing"
+          TEXT=":github: Update in issue at CPNR-computing"
           TEXT="$TEXT\n- Title: ${{ github.event.issue.title }}"
-          TEXT="$TEXT\n- URL: ${{ github.event.issue.url }}"
+          TEXT="$TEXT\n- URL: ${{ github.event.issue.html_url }}"
           echo -ne '{"text":"' >> mattermost.json
           echo -ne "$TEXT" >> mattermost.json
           echo -ne '"}' >> mattermost.json
