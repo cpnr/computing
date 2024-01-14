@@ -12,10 +12,12 @@ on:
     branches: [main]
   
 jobs:
-  print_context:
+  summary_issue:
     runs-on: ubuntu-latest
     steps:
-      - env:
-          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+      - name: Write message to mattermost channel
+        uses: mattermost/action-mattermost-notify@master
+        env:
+          MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"          
         run: |
           echo $EVENT_CONTEXT
