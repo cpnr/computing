@@ -17,8 +17,9 @@ jobs:
     steps:
       - run: |
           echo '${{ github.event.issue }}'
+          TEXT=":tada: New issue at CPNR-computing\n"
           echo '{' >> mattermost.json
-          echo 'text: :tada: $TEXT' >> mattermost.json
+          echo "text: $TEXT" >> mattermost.json
           echo '}' >> mattermost.json
           cat mattermost.json
       #- uses: mattermost/action-mattermost-notify@master
