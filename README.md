@@ -14,11 +14,11 @@
 
 | 노드명 | CPU | RAM | 주 용도 |
 |---|---|---|---|
-| **hep** | Intel Xeon Silver 4210R, max 3.2GHz, 40 threads | 128GB | Main services, login UI machine, Storage 86TB(users), 146TB(cpnr) |
-| **mewtwo** | Intel(R) Xeon(R) CPU E5-1650 v4, 3.6GHz, 12 threads | 128GB | GPU nvidia GTX-1080Ti, SW raid 21TB |
-| **lapras** | AMD Ryzen Threadripper 3990X 64-Core, 2.9GHz, 128 threads | 256GB | GPU nvidia GTX-2080Ti, liquid cooling |
-| **lugia** | AMD EPYC 7702 64-Core, 256 threads | 384GB | |
-| **ho-oh** | AMD EPYC 7302 16-Core, 64 threads | 128GB | FPGA Xilinx Alveo U200 |
-| **raikou** | AMD EPYC 9334 32-Core, 128 threads | 512GB | slurm worker node |
-| **entei** | AMD EPYC 9334 32-Core, 128 threads | 512GB | slurm worker node |
-| **suicune** | AMD EPYC 9334 32-Core, 128 threads | 512GB | slurm worker node |
+| **hep** | Intel Xeon Silver 4210R<br/>max 3.2GHz, 40 threads | 128GB | Main services<br/>login UI machine<br/>Storage 86TB(users), 146TB(cpnr) |
+| **mewtwo** | Intel(R) Xeon(R) CPU E5-1650 v4<br/>3.6GHz, 12 threads | 128GB | GPU nvidia GTX-1080Ti<br/>SW raid 21TB |
+| **lapras** | AMD Ryzen Threadripper 3990X 64-Core<br/>2.9GHz, 128 threads | 256GB | GPU nvidia GTX-2080Ti<br/>liquid cooling |
+| **lugia** | AMD EPYC 7702 64-Core<br/>256 threads | 384GB | multithread-intensive tasks |
+| **ho-oh** | AMD EPYC 7302 16-Core<br/>64 threads | 128GB | FPGA Xilinx Alveo U200 |
+| **raikou** | AMD EPYC 9334 32-Core<br/>128 threads | 512GB | slurm worker node |
+| **entei** | AMD EPYC 9334 32-Core<br/>128 threads | 512GB | slurm worker node |
+| **suicune** | AMD EPYC 9334 32-Core<br/>128 threads | 512GB | slurm worker node |
