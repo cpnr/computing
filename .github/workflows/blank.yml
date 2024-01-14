@@ -1,0 +1,21 @@
+name: 'Issue tracker mm-bot'
+
+on:
+  workflow_dispatch:
+
+  issues:
+    types: [opened, edited, deleted, closed, reopened]
+  issue_comment: 
+    types: [created, edited, deleted]
+  pull_request:
+    types: [opened, edited, closed, reopened]
+    branches: [main]
+  
+jobs:
+  print_context:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
