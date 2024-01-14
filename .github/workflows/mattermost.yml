@@ -17,13 +17,14 @@ jobs:
     steps:
       - run: |
           echo '${{ toJSON(github.event.issue) }}'
-          TEXT=":tada: New issue at CPNR-computing\n"
+          TEXT=":tada: Update in issue at CPNR-computing"
+          TEXT="$TEXT\n- Title: ${{ github.event.issue.title }}"
+          TEXT="$TEXT\n- URL: ${{ github.event.issue.url }}"
           echo '{' >> mattermost.json
           echo "text: $TEXT" >> mattermost.json
-          echo '}' >> mattermost.json
-          cat mattermost.json
-      #- uses: mattermost/action-mattermost-notify@master
-      #  env:
-      #    MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"
-      #    MATTERMOST_USERNAME: "cpnr-computing"
-      #    MATTERMOST_ICON: "https://avatars.githubusercontent.com/u/70711208?s=400&u=65f046741488f22be7ba197426339f6d8311b69f&v=4"
+          echo '}' >> mattermost.json  
+      - uses: mattermost/action-mattermost-notify@master
+        env:
+          MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"
+          MATTERMOST_USERNAME: "cpnr-computing"
+          MATTERMOST_ICON: "https://avatars.githubusercontent.com/u/70711208?s=400&u=65f046741488f22be7ba197426339f6d8311b69f&v=4"
