@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo '${{ github.event.issue }}'
+          echo '${{ toJSON(github.event.issue) }}'
           TEXT=":tada: New issue at CPNR-computing\n"
           echo '{' >> mattermost.json
           echo "text: $TEXT" >> mattermost.json
