@@ -4,19 +4,21 @@ on:
   workflow_dispatch:
 
   issues:
-    types: [opened, edited, deleted, closed, reopened]
+    #types: [opened, edited, deleted, closed, reopened]
+    types: [opened, edited, deleted, reopened]
   issue_comment: 
-    types: [created, edited, deleted]
+    types: [created, edited]
   pull_request:
     types: [opened, edited, closed, reopened]
     branches: [main]
   
 jobs:
-  summary_issue:
+  monitor_issue:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          TEXT=":github: Update in issue at CPNR-computing"
+          IMOJI=":github":
+          TEXT="$IMOJI Update in issue at CPNR-computing"
           TEXT="$TEXT\n- Title: ${{ github.event.issue.title }}"
           TEXT="$TEXT\n- URL: ${{ github.event.issue.html_url }}"
           echo -ne '{"text":"' >> mattermost.json
