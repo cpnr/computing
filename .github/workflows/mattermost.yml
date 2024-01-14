@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo "testing github action :tada:" >> mattermost.json
+          echo "{" >> mattermost.json
+          echo "\"text\": \"testing github action :tada:\"" >> mattermost.json
+          echo "}" >> mattermost.json
       - uses: mattermost/action-mattermost-notify@master
         env:
           MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"          
