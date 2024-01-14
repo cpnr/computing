@@ -17,7 +17,7 @@ jobs:
     steps:
       - run: |
           echo '${{ toJSON(github) }}'
-          echo '${{ toJSON("testing github action :tada:") }}'
+          #echo '${{ toJSON(\"testing github action :tada:\") }}'
           #echo '{' >> mattermost.json
           #echo '"text": "testing github action 2 :tada:"' >> mattermost.json
           #echo '}' >> mattermost.json
