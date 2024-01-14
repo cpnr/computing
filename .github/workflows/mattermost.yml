@@ -19,9 +19,9 @@ jobs:
           TEXT=":tada: Update in issue at CPNR-computing"
           TEXT="$TEXT\n- Title: ${{ github.event.issue.title }}"
           TEXT="$TEXT\n- URL: ${{ github.event.issue.url }}"
-          echo '{' >> mattermost.json
-          echo 'text: "$TEXT"' >> mattermost.json
-          echo '}' >> mattermost.json
+          echo '{text:"' >> mattermost.json
+          echo "$TEXT" >> mattermost.json
+          echo '"}' >> mattermost.json
           cat mattermost.json
       - uses: mattermost/action-mattermost-notify@master
         env:
