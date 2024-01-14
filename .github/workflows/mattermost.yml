@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          echo '${{ toJSON(github) }}'
-      #    echo '${{ toJSON(\"testing github action :tada:\") }}'
-      #    #echo '{' >> mattermost.json
-      #    #echo '"text": "testing github action 2 :tada:"' >> mattermost.json
-      #    #echo '}' >> mattermost.json
+          echo '${{ github.event.issue }}'
+          echo '{' >> mattermost.json
+          echo 'text: :tada: $TEXT' >> mattermost.json
+          echo '}' >> mattermost.json
+          cat mattermost.json
       #- uses: mattermost/action-mattermost-notify@master
       #  env:
       #    MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"
