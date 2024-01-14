@@ -15,9 +15,8 @@ jobs:
   summary_issue:
     runs-on: ubuntu-latest
     steps:
-      - name: Write message to mattermost channel
-        uses: mattermost/action-mattermost-notify@master
+      - run: |
+          echo "testing github action :tada:" >> mattermost.json
+      - uses: mattermost/action-mattermost-notify@master
         env:
           MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"          
-        run: |
-          echo "testing github action :tada:" >> mattermost.json
