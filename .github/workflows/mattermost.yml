@@ -18,11 +18,11 @@ jobs:
       - run: |
           echo '${{ toJSON(github) }}'
           echo '${{ toJSON("testing github action :tada:") }}'
-          echo "{" >> mattermost.json
-          echo "\"text\": \"testing github action 2 :tada:\"" >> mattermost.json
-          echo "}" >> mattermost.json
-      - uses: mattermost/action-mattermost-notify@master
-        env:
-          MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"
-          MATTERMOST_USERNAME: "cpnr-computing"
-          MATTERMOST_ICON: "https://avatars.githubusercontent.com/u/70711208?s=400&u=65f046741488f22be7ba197426339f6d8311b69f&v=4"
+          #echo '{' >> mattermost.json
+          #echo '"text": "testing github action 2 :tada:"' >> mattermost.json
+          #echo '}' >> mattermost.json
+      #- uses: mattermost/action-mattermost-notify@master
+      #  env:
+      #    MATTERMOST_WEBHOOK_URL: "https://mattermost.web.cern.ch/hooks/5b4ab1kgdtdete87bghxebcdgy"
+      #    MATTERMOST_USERNAME: "cpnr-computing"
+      #    MATTERMOST_ICON: "https://avatars.githubusercontent.com/u/70711208?s=400&u=65f046741488f22be7ba197426339f6d8311b69f&v=4"
