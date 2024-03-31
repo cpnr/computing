@@ -14,6 +14,7 @@
 
 - 네트워크 연결은 KISTI의 Kreonet(1G)망을 통해 연결됩니다.
 - 중성미자정밀연구센터 이용자의 대용량 파일은 `/store/cpnr`을 이용해 주세요
+- 시뮬레이션 샘플 생성, 대용량 데이터 분석 등은 `slurm` 배치 환경을 이용해 주세요.
 - 컴퓨팅 자원에 대한 세부 정보는 [[여기]](https://github.com/cpnr/computing/blob/main/Resources.md)에서 확인할 수 있습니다.
 
 ## 계정 생성하기
