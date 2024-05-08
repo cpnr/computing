@@ -25,9 +25,9 @@ jobs:
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
             :github: Issue at CPNR-computing is ${{ github.event.action }}
-            - Title: ${{ github.event.issue.title }}"
-            - URL: ${{ github.event.issue.html_url }}"
-            ${{ github.event.issue.body }}
+            - Title: "${{ github.event.issue.title }}"
+            - URL: "${{ github.event.issue.html_url }}"
+            > ${{ github.event.issue.body }}
   notify_comment:
     runs-on: ubuntu-latest
     if: ${{ github.event_name == 'issue_comment' }}
@@ -39,6 +39,6 @@ jobs:
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
             :github: Comment in issue at CPNR-computing is ${{ github.event.action }}
-            - Title: ${{ github.event.issue.title }}
-            - URL: ${{ github.event.issue.html_url }}
-            ${{ github.event.comment.body }}
+            - Title: "${{ github.event.issue.title }}"
+            - URL: "${{ github.event.issue.html_url }}"
+            > ${{ github.event.comment.body }}
