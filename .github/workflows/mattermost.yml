@@ -40,7 +40,8 @@ jobs:
           echo -ne '"}' >> mattermost.json
           cat mattermost.json
       - uses: mattermost/action-mattermost-notify@master
-        env:
+        with:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON: ${{ vars.MATTERMOST_ICON }}
+          PAYLOAD_FILENAME: mattermost.json
