@@ -15,7 +15,7 @@ on:
 jobs:
   notify_issue:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == "issues" }}
+    if: ${{ github.event_name == 'issues' }}
     steps:
       - name: mattermost-notify
         uses: mattermost/action-mattermost-notify@master
@@ -30,7 +30,7 @@ jobs:
             ${{ github.event.issue.body }}
   notify_comment:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == "issue_comment" }}
+    if: ${{ github.event_name == 'issue_comment' }}
     steps:
       - uses: mattermost/action-mattermost-notify@master
         with:
