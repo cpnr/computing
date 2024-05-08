@@ -17,6 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test_secrets
+        env:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+          MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
+          MATTERMOST_ICON: ${{ vars.MATTERMOST_ICON }}
         run: |
           echo -ne "From action ${{ vars.MATTERMOST_USERNAME }}"
           echo -ne "${{ github.event }}"
@@ -35,7 +39,7 @@ jobs:
           echo -ne '"}' >> mattermost.json
           cat mattermost.json
       - uses: mattermost/action-mattermost-notify@master
-        with:
+        env:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON: ${{ vars.MATTERMOST_ICON }}
