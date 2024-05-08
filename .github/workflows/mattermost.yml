@@ -15,7 +15,7 @@ on:
 jobs:
   notify_issue:
     runs-on: ubuntu-latest
-    if: ${{ github.event.issue }}
+    if: ${{ !github.event.issue_comment }}
     steps:
       - name: mattermost-notify
         uses: mattermost/action-mattermost-notify@master
@@ -24,10 +24,10 @@ jobs:
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
-            :github: Issue in issue at CPNR-computing is ${{ github.event.action }}
+            :github: Issue at CPNR-computing is ${{ github.event.type }}
             - Title: ${{ github.event.issue.title }}"
             - URL: ${{ github.event.issue.html_url }}"
-            Content: ${{ github.event.comment.body }}
+            Content: ${{ github.event.issue.body }}
   notify_comment:
     runs-on: ubuntu-latest
     if: ${{ github.event.issue_comment }}
@@ -38,7 +38,7 @@ jobs:
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
-            :github: Comment in issue at CPNR-computing is ${{ github.event.action }}
+            :github: Comment in issue at CPNR-computing is ${{ github.event.type }}
             - Title: ${{ github.event.issue.title }}
             - URL: ${{ github.event.issue.html_url }}
-            Content: ${{ github.event.comment.body }}
+            Comment: ${{ github.event.comment.body }}
