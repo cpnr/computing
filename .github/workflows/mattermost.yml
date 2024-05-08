@@ -26,7 +26,7 @@ jobs:
           echo -ne '"}' >> mattermost.json
           cat mattermost.json
       - uses: mattermost/action-mattermost-notify@master
-        env:
+        with:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           MATTERMOST_USERNAME: "cpnr-computing"
           MATTERMOST_ICON: "https://avatars.githubusercontent.com/u/70711208?s=400&u=65f046741488f22be7ba197426339f6d8311b69f&v=4"
