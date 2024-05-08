@@ -24,9 +24,8 @@ jobs:
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
-            :github: Issue at CPNR-computing is ${{ github.event.action }}
-            - Title: "${{ github.event.issue.title }}"
-            - URL: "${{ github.event.issue.html_url }}"
+            :github: Issue ${{ github.event.issue.html_url }} is ${{ github.event.action }}
+            "${{ github.event.issue.title }}"
             > ${{ github.event.issue.body }}
   notify_comment:
     runs-on: ubuntu-latest
@@ -38,7 +37,6 @@ jobs:
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
-            :github: Comment in issue at CPNR-computing is ${{ github.event.action }}
-            - Title: "${{ github.event.issue.title }}"
-            - URL: "${{ github.event.issue.html_url }}"
+            :github: Comment is ${{ github.event.action }}
+            in issue "${{ github.event.issue.title }}" (${{ github.event.issue.html_url }})
             > ${{ github.event.comment.body }}
