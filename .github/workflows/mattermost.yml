@@ -43,5 +43,5 @@ jobs:
         with:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
-          MATTERMOST_ICON: ${{ vars.MATTERMOST_ICON }}
-          PAYLOAD_FILENAME: mattermost.json
+          MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
+          PAYLOAD: mattermost.json
