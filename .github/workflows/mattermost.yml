@@ -13,36 +13,16 @@ on:
   #  branches: [main]
   
 jobs:
-  test_secrets:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test_secrets
-        env:
-          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
-          MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
-          MATTERMOST_ICON: ${{ vars.MATTERMOST_ICON }}
-        run: |
-          echo -ne "From action: ${{ vars.MATTERMOST_USERNAME }}"
-          echo -ne "From secrets: ${{ secrets.MATTERMOST_WEBHOOK_URL }}"
-          echo -ne "From env:"
-          env | grep "MATTERMOST"
   monitor_issue:
     runs-on: ubuntu-latest
     steps:
-      - name: mm_setup
-        run: |
-          IMOJI=":github":
-          TEXT="$IMOJI Update in issue at CPNR-computing"
-          TEXT="$TEXT\n- Title: ${{ github.event.issue.title }}"
-          TEXT="$TEXT\n- URL: ${{ github.event.issue.html_url }}"
-          echo $TEXT >> $GITHUB_ENV
-        #  echo -ne '{"text":"' >> mattermost.json
-        #  echo -ne "$TEXT" >> mattermost.json
-        #  echo -ne '"}' >> mattermost.json
-        #  cat mattermost.json
-      - uses: mattermost/action-mattermost-notify@master
+      - name: mattermost-notify
+        uses: mattermost/action-mattermost-notify@master
         with:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
-          TEXT: ${{ env.TEXT }}
+          TEXT: |-
+            :github: Update in issue at CPNR-computing"
+            Title: ${{ github.event.issue.title }}"
+            URL: ${{ github.event.issue.html_url }}"
