@@ -35,13 +35,14 @@ jobs:
           TEXT="$IMOJI Update in issue at CPNR-computing"
           TEXT="$TEXT\n- Title: ${{ github.event.issue.title }}"
           TEXT="$TEXT\n- URL: ${{ github.event.issue.html_url }}"
-          echo -ne '{"text":"' >> mattermost.json
-          echo -ne "$TEXT" >> mattermost.json
-          echo -ne '"}' >> mattermost.json
-          cat mattermost.json
+          echo $TEXT" >> $GITHUB_ENV
+        #  echo -ne '{"text":"' >> mattermost.json
+        #  echo -ne "$TEXT" >> mattermost.json
+        #  echo -ne '"}' >> mattermost.json
+        #  cat mattermost.json
       - uses: mattermost/action-mattermost-notify@master
         with:
           MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
-          PAYLOAD: mattermost.json
+          TEXT: ${{ env.TEXT }}
