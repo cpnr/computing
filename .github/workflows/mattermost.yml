@@ -16,8 +16,9 @@ jobs:
   test_secrets:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo -ne "${{ github.event.issue.title }}"
+      - name: test_secrets
+        run: |
+          echo -ne "From action ${{ vars.MATTERMOST_USERNAME }}"
           echo -ne "${{ github.event }}"
   monitor_issue:
     runs-on: ubuntu-latest
