@@ -22,9 +22,10 @@ jobs:
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON: ${{ vars.MATTERMOST_ICON }}
         run: |
-          echo -ne "From action ${{ vars.MATTERMOST_USERNAME }}"
-          echo -ne "${{ github.event }}"
-          echo -ne "${{ secrets.MATTERMOST_WEBHOOK_URL }}"
+          echo -ne "From action: ${{ vars.MATTERMOST_USERNAME }}"
+          echo -ne "From secrets: ${{ secrets.MATTERMOST_WEBHOOK_URL }}"
+          echo -ne "From env:"
+          env | grep "MATTERMOST"
   monitor_issue:
     runs-on: ubuntu-latest
     steps:
