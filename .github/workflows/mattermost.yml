@@ -20,6 +20,7 @@ jobs:
         run: |
           echo -ne "From action ${{ vars.MATTERMOST_USERNAME }}"
           echo -ne "${{ github.event }}"
+          echo -ne "${{ secrets.MATTERMOST_WEBHOOK_URL }}"
   monitor_issue:
     runs-on: ubuntu-latest
     steps:
