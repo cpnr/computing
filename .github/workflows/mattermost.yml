@@ -13,8 +13,9 @@ on:
   #  branches: [main]
   
 jobs:
-  monitor_issue:
+  notify_issue:
     runs-on: ubuntu-latest
+    if: ${{ github.event.issue }}
     steps:
       - name: mattermost-notify
         uses: mattermost/action-mattermost-notify@master
@@ -23,6 +24,21 @@ jobs:
           MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
           MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
           TEXT: |-
-            :github: Update in issue at CPNR-computing"
-            Title: ${{ github.event.issue.title }}"
-            URL: ${{ github.event.issue.html_url }}"
+            :github: Issue in issue at CPNR-computing is ${{ github.event.action }}
+            - Title: ${{ github.event.issue.title }}"
+            - URL: ${{ github.event.issue.html_url }}"
+            Content: ${{ github.event.comment.body }}
+  notify_comment:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.issue_comment }}
+    steps:
+      - uses: mattermost/action-mattermost-notify@master
+        with:
+          MATTERMOST_WEBHOOK_URL: ${{ secrets.MATTERMOST_WEBHOOK_URL }}
+          MATTERMOST_USERNAME: ${{ vars.MATTERMOST_USERNAME }}
+          MATTERMOST_ICON_URL: ${{ vars.MATTERMOST_ICON }}
+          TEXT: |-
+            :github: Comment in issue at CPNR-computing is ${{ github.event.action }}
+            - Title: ${{ github.event.issue.title }}
+            - URL: ${{ github.event.issue.html_url }}
+            Content: ${{ github.event.comment.body }}
