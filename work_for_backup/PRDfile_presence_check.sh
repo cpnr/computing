@@ -5,12 +5,20 @@ storedir=/store/cpnr-data/RENE/Data/Data
 
 nPRD=0
 
+#for run in 1000 ;do
 for run in {475..2223..1};do
     run_str=$(printf "%06d" "$run")
     found=0
-    if [ -d "Data/RAW/${run_str}" ]; then
+    if [ -d "${storedir}/RAW/${run_str}" ]; then
         #echo $run_str
-        for file in Data/RAW/${run_str}/PRD/*; do
+
+        if [ ! -d "${storedir}/RAW/${run_str}/PRD" ]; then
+            mkdir -p ${storedir}/RAW/${run_str}/PRD
+            mkdir -p ${storedir}/RAW/${run_str}/Merged
+            mkdir -p ${storedir}/RAW/${run_str}/PNG
+        fi
+
+        for file in ${storedir}/RAW/${run_str}/PRD/*; do
 
             if [ -f "$file" ]; then
                 found=1
@@ -27,7 +35,7 @@ for run in {475..2223..1};do
             #echo Data/RAW/${run_str}/PRD/
             echo ${run_str}
         else
-            if [ $found -gt $nPRD ]; then # nfound > nPRD
+            if [ $nFADC -gt $found ]; then # nfound > nPRD
                 #echo Data/RAW/${run_str}/PRD/
                 echo ${run_str}
             fi
