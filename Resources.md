@@ -12,7 +12,7 @@
 | raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
 | entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
 | suicune | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
-| jammanbo | 24x2.4GHz<br/>64GB | 조립 파일서버<br/>Intel Xeon Silver 4510<br/>2.4-4.1GHz | File server | 2025.06 |
+| jammanbo | 24x2.4GHz<br/>64GB | 조립 파일서버<br/>Intel Xeon Silver 4510<br/>2.4-4.1GHz | Storage 140TB(cpnr-data) | 2025.06 |
 | naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>3.8-4GHz<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) | 
 
 - 2025년 12월 GPU 업그레이드
