@@ -4,16 +4,16 @@
 
 | 노드명 | CPU GHz/RAM GB | 세부 정보 | 주 용도 | 도입 시기 |
 |---|---|---|---|---|
-| hep | 40x2.4GHz<br/>128GB | Dell PowerEdge R540<br/>Intel Xeon Silver 4210R<br/>2.4-3.2GHz | Main services<br/>slurm control daemon<br/>login UI machine<br/>Storage 86TB(users), 146TB(cpnr) | 2021.06 |
-| lugia | 256x2.0GHz<br/>384GB | Dell PowerEdge R7525<br/>AMD EPYC 7702 64-Core<br/>2.0-3.35GHz | User login, terminal<br/>multithread-intensive tasks | 2020.10 |
-| mewtwo | 12x3.2GHz<br/>128GB | MX-612D8A<br/>Intel(R) Xeon(R) CPU E5-1650 v4<br/>3.2-3.8GHz | JBOD 36TB<br/>FPGA Xilinx Alveo U200 | 2018.06 |
-| lapras | 128x2.9GHz<br/>256GB | YJ Workstation Custom liquid cooling<br/>AMD Ryzen Threadripper 3990X 64-Core<br/>2.9-4.3GHz<br/>4xGPU nvidia GTX-5090 | Deep learning, many-core jobs | 2020.04<br/>(2025.12 GPU업그레이드) |
-| ho-oh | 64x3.0GHz<br/>128GB | Dell PowerEdge R7525<br/>AMD EPYC 7302 16-Core<br/>3.0-3.3GHz | slurm worker node | 2020.10 |
-| raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
-| entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
-| suicune | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core<br/>2.7-3.9GHz | slurm worker node | 2023.12 |
-| jammanbo | 24x2.4GHz<br/>64GB | Dasan 파일서버<br/>Intel Xeon Silver 4510<br/>2.4-4.1GHz | Storage 140TB(cpnr-data) | 2025.06 |
-| naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>3.8-4GHz<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) | 
+| hep | 40x2.4GHz<br/>128GB | Dell PowerEdge R540<br/>Intel Xeon Silver 4210R | Main services<br/>slurm control daemon<br/>login UI machine<br/>Storage 86TB(users), 146TB(cpnr) | 2021.06 |
+| lugia | 256x2.0GHz<br/>384GB | Dell PowerEdge R7525<br/>AMD EPYC 7702 64-Core | User login, terminal<br/>multithread-intensive tasks | 2020.10 |
+| mewtwo | 12x3.2GHz<br/>128GB | MX-612D8A<br/>Intel(R) Xeon(R) CPU E5-1650 v4 | JBOD 36TB<br/>FPGA Xilinx Alveo U200 | 2018.06 |
+| lapras | 128x2.9GHz<br/>256GB | YJ Workstation Custom liquid cooling<br/>AMD Ryzen Threadripper 3990X 64-Core<br/>4xGPU nvidia GTX-5090 | Deep learning, many-core jobs | 2020.04<br/>(2025.12 GPU업그레이드) |
+| ho-oh | 64x3.0GHz<br/>128GB | Dell PowerEdge R7525<br/>AMD EPYC 7302 16-Core | slurm worker node | 2020.10 |
+| raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
+| entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
+| suicune | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
+| jammanbo | 24x2.4GHz<br/>64GB | Dasan 파일서버<br/>Intel Xeon Silver 4510 | Storage 140TB(cpnr-data) | 2025.06 |
+| naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-CoreGPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) | 
 
 - 2025년 12월 GPU 업그레이드
   - lapras의 4x2080ti 고장 등으로 제거하고 4x5090으로 업그레이드
