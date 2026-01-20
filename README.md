@@ -1,4 +1,4 @@
-# Computing for CPNR
+# Computing KHU-HEP/CPNR
 경희대 입자실험연구실/중성미자정밀연구센터 컴퓨팅과 관련된 각종 이슈를 관리합니다.
 사용중 문제나 제안사항이 있다면 본 repository의 issue를 만들어 관리합니다.
 
