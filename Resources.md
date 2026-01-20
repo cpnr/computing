@@ -21,6 +21,16 @@
   - ho-oh의 alveo카드를 mewtwo로 이전
   - mewtwo의 1080ti를 데스크탑으로 이전
   - mewtwo에 HDD 추가하고 SW raid 대신 jbod+mergerfs 구성
+ 
+## 저장공간 구성
+파일서버들 별 용도에 따라 nfs로 저장 공간을 공유합니다. 편의상 동일한 물리적 디스크이지만 디렉토리별로 각각 마운트해 사용하기도 합니다.
+- hep.lo
+  - Raid1 (86TB) -> `/users/hep`, `/store/hep`, `/store/sw`
+  - Raid2 (146TB) -> `/users/cpnr`, `/store/cpnr`
+- jammanbo.lo
+  - Raid1 (140TB) -> `/store/cpnr-data`
+- mewtwo.lo
+  - JBOD disk pool (37T) -> `/store/mewtwo`
 
 ## 네트워크 구성
 ```
@@ -29,14 +39,14 @@ HEP 네트워크 구성도
 KREONET hep.khu.ac.kr ┐
                  eno1 │
       210.117.211.131 │
-   GW:210.117.211.129 │     ┌──────────────┐
-                      └─────┤ hep          │
-               enp59s0f0 ┌──┤  /users      ├──┐ enp1s0f0
-      hep.lo 192.168.0.1 │  │  /store/sw   │  │ hep.mgmt 192.168.100.101
-                         │  │  /store/hep  │  │ hep.idrac 192.168.0.101
-      ┌─ ─ ─ ─ ─ ─ ─ ┐   │  │  /store/cpnr │  │            ┌─ ─ ─ ─ ─ ─ ┐
-   ┌──┤ Dell-10G HUB ├───┘  └──────────────┘  └───[gender]─┤  HP-1G HUB ├────────────────┐
-   │  └─ ─ ─ ─ ─ ─ ┬ ┘                                     └─ ─ ─ ─ ─ ─ ┘                │
+   GW:210.117.211.129 │     ┌───────────────┐
+                      └─────┤ hep           │
+               enp59s0f0 ┌──┤  /users/hep   ├──┐ enp1s0f0
+      hep.lo 192.168.0.1 │  │  /users/cpnr  │  │ hep.mgmt 192.168.100.101
+                         │  │  /store/hep   │  │ hep.idrac 192.168.0.101
+      ┌─ ─ ─ ─ ─ ─ ─ ┐   │  │  /store/cpnr  │  │            ┌─ ─ ─ ─ ─ ─ ┐
+   ┌──┤ Dell-10G HUB ├───┘  └───────────────┘  └───[gender]─┤  HP-1G HUB ├───────────────┐
+   │  └─ ─ ─ ─ ─ ─ ┬ ┘                                      └─ ─ ─ ─ ─ ─ ┘               │
    │               └──────────────────────────┐                                          │
    │  [gender]      ┌────────────────┐        │              ┌─────────┐                 │
    ├─ mewtwo.lo    ─┤ mewtwo (FPGA)  │        ├─ lugia.lo   ─┤ lugia   ├─ lugia.idrac   ─┤
