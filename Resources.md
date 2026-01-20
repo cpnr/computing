@@ -49,7 +49,7 @@ KREONET hep.khu.ac.kr ┐
                                               ├─ raikou.lo  ─┤ raikou  ├─ raikou.idrac  ─┤
                     ┌───────────────┐         │  192.168.0.6 └─────────┘  192.168.0.106  │
    ┌─ lapras.lo    ─┤ lapras (5090) │         │              ┌─────────┐                 │
-   │  192.168.0.5   └───────────────┘         ├─ entei.lo   ─┤ entei   ├─ entei.idrac   ─┤
+   │  192.168.0.4   └───────────────┘         ├─ entei.lo   ─┤ entei   ├─ entei.idrac   ─┤
    │                ┌───────────────┐         │  192.168.0.7 └─────────┘  192.168.0.107  │
    ├─ naong.lo     ─┤ naong (1080)  │         │              ┌─────────┐                 │
    │  192.168.0.9   └───────────────┘         └─ suicune.lo ─┤ suicune ├─ suicune.idrac ─┤
