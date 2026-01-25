@@ -30,7 +30,8 @@
 - jammanbo.lo
   - Raid1 (140TB) -> `/store/cpnr-data`
 - mewtwo.lo
-  - JBOD disk pool (37T) -> `/store/mewtwo`
+  - JBOD disk pool (44T) -> `/store/mewtwo`
+  - archive disk (3.7T): 전체 시스템의 중요한 파일들 백업 (indico자료, 웹서버 자료, 중요 설정 등)
 
 ## 네트워크 구성
 ```
