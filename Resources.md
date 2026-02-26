@@ -25,10 +25,10 @@
 ## 저장공간 구성
 파일서버들 별 용도에 따라 nfs로 저장 공간을 공유합니다. 편의상 동일한 물리적 디스크이지만 디렉토리별로 각각 마운트해 사용하기도 합니다.
 - hep.lo
-  - Raid1 (86TB) -> `/users/hep`, `/store/hep`, `/store/sw`
-  - Raid2 (146TB) -> `/users/cpnr`, `/store/cpnr`
+  - Raid (86TB) -> `/users/hep`, `/store/hep`, `/store/sw`
+  - Raid (146TB) -> `/users/cpnr`, `/store/cpnr`
 - jammanbo.lo
-  - Raid1 (140TB) -> `/store/cpnr-data`
+  - Raid (140TB) -> `/store/cpnr-data`
 - mewtwo.lo
   - JBOD disk pool (44T) -> `/store/mewtwo`
   - archive disk (3.7T): NFS공유하지 않음. 전체 시스템의 중요한 파일들 백업 (indico자료, 웹서버 자료, 중요 설정 등)
