@@ -40,27 +40,27 @@ Last login: Sun Mar 31 13:59:58 2024 from 194.12.146.87
 ```
 
 ### 소프트웨어 사용하기
-#### anaconda 환경 사용하기
-데이터 분석을 위한 환경으로 anaconda를 사용할 수 있습니다. 
-anaconda를 사용하기 위해 아래 명령어를 실행해 기본 환경변수를 설정할 수 있습니다. 아래 내용을 `~/.bashrc`에 추가하시면 로그인할 때 자동으로 적용됩니다.
+#### mamba 환경 사용하기
+데이터 분석을 위한 환경으로 mamba를 사용할 수 있습니다. 
+mamba를 사용하기 위해 아래 명령어를 실행해 기본 환경변수를 설정할 수 있습니다. 아래 내용을 `~/.bashrc`에 추가하시면 로그인할 때 자동으로 적용됩니다.
 ```bash
-source /store/sw/anaconda3/etc/profile.d/conda.sh
+source /store/sw/miniconda3/etc/profile.d/mamba.sh
 ```
 
-python이나 root를 사용할 수 있는 anaconda 환경을 미리 만들어 두었습니다. 
+python이나 root를 사용할 수 있는 mamba 환경을 미리 만들어 두었습니다. 
 아래 명령어를 이용해 활성화 할 수 있습니다.
 ```bash
-conda activate ds4hep
+mamba activate hep2026.01
 ```
 
 필요하다면 개인별 환경을 설치해 활용할 수 있습니다. 
 아래 예시의 `<MY_ENVIRONMENT>` 부분을 본인이 원하는 대로 바꿔 사용하시면 됩니다. 예시 중 `conda install` 부분도 본인이 필요한 패키지들을 찾아 바꿔 사용하시면 됩니다.
 ```bash
-conda create -p ~/<MY_ENVIRONMENT>
-conda activate <MY_ENVIRONMENT>
-conda install -c conda-forge root
-conda install -c conda-forge uproot matplotlib scipy numpy yaml
-conda install -c conda-forge jupyter-notebook
+mamba create -p ~/<MY_ENVIRONMENT>
+mamba activate <MY_ENVIRONMENT>
+mamba install -c conda-forge root
+mamba install -c conda-forge uproot matplotlib scipy numpy yaml
+mamba install -c conda-forge jupyter-notebook
 ```
 
 공용으로 사용할만한 패키지들이 있으면 관리자 (고정환 교수)에게 알려주시거나, [[github issue]](https://github.com/cpnr/computing/issues)를 생성해 주세요.
