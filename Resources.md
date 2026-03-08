@@ -46,9 +46,9 @@ KREONET hep.khu.ac.kr ┐
                enp59s0f0 ┌──┤  /users/hep   ├──┐ enp1s0f0
       hep.lo 192.168.0.1 │  │  /users/cpnr  │  │ hep.mgmt 192.168.100.101
                          │  │  /store/hep   │  │ hep.idrac 192.168.0.101
-      ┌─ ─ ─ ─ ─ ─ ─ ┐   │  │  /store/cpnr  │  │            ┌─ ─ ─ ─ ─ ─ ┐
-   ┌──┤ Dell-10G HUB ├───┘  └───────────────┘  └───[gender]─┤  HP-1G HUB ├───────────────┐
-   │  └─ ─ ─ ─ ─ ─ ┬ ┘                                      └─ ─ ─ ─ ─ ─ ┘               │
+      ┌─ ─ ─ ─ ─ ─ ─ ┐   │  │  /store/cpnr  │  │            ┌─ ─ ─ ─ ─ ─┐
+   ┌──┤ Dell-10G HUB ├───┘  └───────────────┘  └───[gender]─┤ HP-1G HUB ├────────────────┐
+   │  └─ ─ ─ ─ ─ ─ ┬ ┘                                      └─ ─ ─ ─ ─ ─┘                │
    │               └──────────────────────────┐                                          │
    │  [gender]      ┌────────────────┐        │              ┌─────────┐                 │
    ├─ mewtwo.lo    ─┤ mewtwo (FPGA)  │        ├─ lugia.lo   ─┤ lugia   ├─ lugia.idrac   ─┤
