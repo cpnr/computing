@@ -7,7 +7,7 @@
 | hep | 40x2.4GHz<br/>128GB | Dell PowerEdge R540<br/>Intel Xeon Silver 4210R | Main services<br/>slurm control daemon<br/>login UI machine<br/>RAID 86TB+146TB | 2021.06 |
 | lugia | 256x2.0GHz<br/>384GB | Dell PowerEdge R7525<br/>AMD EPYC 7702 64-Core | User login, terminal<br/>multithread-intensive tasks | 2020.10 |
 | mewtwo | 12x3.2GHz<br/>128GB | MX-612D8A<br/>Intel(R) Xeon(R) CPU E5-1650 v4<br/>Xilinx Alveo U200 | JBOD disk pool 44TB<br/>System backup<br/>FPGA | 2018.06 |
-| lapras | 128x2.9GHz<br/>256GB | YJ Workstation Custom liquid cooling<br/>AMD Ryzen Threadripper 3990X 64-Core<br/>4xGPU nvidia GTX-5090 | Deep learning, many-core jobs | 2020.04<br/>(2025.12 GPU업그레이드) |
+| lapras | 128x2.9GHz<br/>256GB | YJ Workstation Custom liquid cooling<br/>AMD Ryzen Threadripper 3990X 64-Core<br/>4xGPU nvidia GTX-5090 | Deep learning, many-core jobs | 2020.04<br/>(2026.03 GPU업그레이드) |
 | ho-oh | 64x3.0GHz<br/>128GB | Dell PowerEdge R7525<br/>AMD EPYC 7302 16-Core | slurm worker node | 2020.10 |
 | raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
 | entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
@@ -16,12 +16,12 @@
 | naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) | 
 | yabuon | 4x1.2GHz<br/>1GB | Raspberry Pi 3B 1.2<br/>ARM Cortex-A53 | Monitor environment<br/>temperature: DS18B20 | 2026.03 |
 
-- 2025년 12월 GPU 업그레이드
-  - lapras의 4x2080ti 고장 등으로 제거하고 4x5090으로 업그레이드
 - 2026년 1월 자원 재분배를 진행했습니다.
   - ho-oh의 alveo카드를 mewtwo로 이전
   - mewtwo의 1080ti를 데스크탑으로 이전
   - mewtwo에 HDD 추가하고 SW raid 대신 jbod+mergerfs 구성
+- 2026년 3월 GPU 업그레이드
+  - lapras의 4x2080ti 고장과 수냉펌프 이상으로 4x5090으로 업그레이드 및 수리
  
 ## 저장공간 구성
 파일서버들 별 용도에 따라 nfs로 저장 공간을 공유합니다. 편의상 동일한 물리적 디스크이지만 디렉토리별로 각각 마운트해 사용하기도 합니다.
