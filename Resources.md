@@ -15,6 +15,7 @@
 | jammanbo | 24x2.4GHz<br/>64GB | Dasan 파일서버<br/>Intel Xeon Silver 4510 | RAID 140TB | 2025.06 |
 | naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) | 
 | yabuon | 4x1.2GHz<br/>1GB | Raspberry Pi 3B 1.2<br/>ARM Cortex-A53 | Monitor environment<br/>temperature: DS18B20 | 2026.03 |
+| mew | 4x3.5GHz<br/>16GB | 조립 데스크탑<br/>AMD Ryzen 3 2200G 4-Core | JBOD disk pool 18TB<br/>Cold storage | 2020 <br/>(2026.04 재배치) |
 
 - 2026년 1월 자원 재분배를 진행했습니다.
   - ho-oh의 alveo카드를 mewtwo로 이전
@@ -22,6 +23,7 @@
   - mewtwo에 HDD 추가하고 SW raid 대신 jbod+mergerfs 구성
 - 2026년 3월 GPU 업그레이드
   - lapras의 4x2080ti 고장과 수냉펌프 이상으로 4x5090으로 업그레이드 및 수리
+- 2026년 4월 Cold storage 추가
  
 ## 저장공간 구성
 파일서버들 별 용도에 따라 nfs로 저장 공간을 공유합니다. 편의상 동일한 물리적 디스크이지만 디렉토리별로 각각 마운트해 사용하기도 합니다.
@@ -33,6 +35,8 @@
 - mewtwo.lo
   - JBOD disk pool (44T) -> `/store/mewtwo`
   - archive disk (3.7T): NFS공유하지 않음. 전체 시스템의 중요한 파일들 백업 (indico자료, 웹서버 자료, 중요 설정 등)
+- mew.lo
+  - JBOD disk pool (18T) -> `/store/mew` (RENE data cold storage)
 
 ## 네트워크 구성
 내부 네트워크는 데이터 전송 전용 10G, 일반 사용 및 관리용 1G로 연결했습니다.
@@ -71,6 +75,10 @@ KREONET hep.khu.ac.kr ┐
    ├─ naong.lo     ─┤ naong (1080)  │         │              ┌─────────┐                 │
    │  192.168.0.9   └───────────────┘         └─ suicune.lo ─┤ suicune ├─ suicune.idrac ─┤
    │                ┌───────────────┐            192.168.0.8 └─────────┘  192.168.0.108  │
+   ├─ yabuon.lo    ─┤ mew           │                                                    │
+   │  192.168.0.11  │  /store/mew   │                                                    │
+   │                └───────────────┘                                                    │
+   │                ┌───────────────┐                                                    │
    ├─ yabuon.lo    ─┤ yabuon (RP3)  │                                                    │
    │  192.168.0.201 └───────────────┘                                                    │
    └─────────────────────────────────────────────────────────────────────────────────────┘
