@@ -36,7 +36,7 @@
   - JBOD disk pool (44T) -> `/store/mewtwo`
   - archive disk (3.7T): NFS공유하지 않음. 전체 시스템의 중요한 파일들 백업 (indico자료, 웹서버 자료, 중요 설정 등)
 - mew.lo
-  - JBOD disk pool (18T) -> `/store/mew` (RENE data cold storage)
+  - JBOD disk pool (18T) -> `/store/cpnr-archive` (RENE data cold storage)
 
 ## 네트워크 구성
 내부 네트워크는 데이터 전송 전용 10G, 일반 사용 및 관리용 1G로 연결했습니다.
