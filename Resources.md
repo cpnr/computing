@@ -21,8 +21,9 @@
   - ho-oh의 alveo카드를 mewtwo로 이전
   - mewtwo의 1080ti를 데스크탑으로 이전
   - mewtwo에 HDD 추가하고 SW raid 대신 jbod+mergerfs 구성
-- 2026년 3월 GPU 업그레이드
-  - lapras의 4x2080ti 고장과 수냉펌프 이상으로 4x5090으로 업그레이드 및 수리
+- 2025년 12월 GPU 업그레이드
+  - lapras의 4x2080ti 고장으로 4x5090으로 업그레이드
+  - GPU 동작전원 이상 및 수냉펌프 시스템 문제로 2026년 3월 수리 완료.
 - 2026년 4월 Cold storage 추가, lapras 10G 연결
  
 ## 저장공간 구성
