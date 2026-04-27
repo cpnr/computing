@@ -1,0 +1,18 @@
+[Unit]
+Description=Fire alarm Monitor
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /home/hep/admin/smoke/smoke_alarm.py
+Restart=always
+RestartSec=5
+
+Environment="WEBHOOK_HEPMM=https://mattermost.web.cern.ch/hooks/<URL TO THE Mattermost channel>"
+Environment="WEBHOOK_CPNRDC=https://discord.com/api/webhooks/<URL TO THE Discord1>"
+Environment="WEBHOOK_SICDC=https://discord.com/api/webhooks/<URL TO THE Discord2>"
+Environment="WEBHOOK_INFLUX=<URL TO INFLUXDB>"
+Environment="TOKEN_INFLUX=<INFLUX TOKEN>"
+
+[Install]
+WantedBy=multi-user.target
