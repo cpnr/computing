@@ -12,7 +12,7 @@
 | raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
 | entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
 | suicune | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
-| jammanbo | 24x2.4GHz<br/>64GB | Dasan 파일서버<br/>Intel Xeon Silver 4510 | RAID 140TB | 2025.06 |
+| jammanbo | 24x2.4GHz<br/>64GB | Dasan supermicro 파일서버<br/>Intel Xeon Silver 4510 | RAID 140TB | 2025.06 |
 | naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) |
 | yabuon | 4x1.2GHz<br/>1GB | Raspberry Pi 3B 1.2<br/>ARM Cortex-A53 | Monitor environment<br/>temperature: DS18B20 | 2026.03 |
 | indico | 8x3.7GHz<br/>6GB | 조립 데스크탑<br/>AMD Ryzen 5 3400G 4-Core<br/>Radeon Vega Graphics | Indico conference server<br/>indico.neutrino.or.kr | 2026.08 |
