@@ -6,16 +6,16 @@
 |---|---|---|---|---|
 | hep | 40x2.4GHz<br/>128GB | Dell PowerEdge R540<br/>Intel Xeon Silver 4210R | Main services<br/>slurm control daemon<br/>login UI machine<br/>RAID 86TB+146TB | 2021.06 |
 | lugia | 256x2.0GHz<br/>384GB | Dell PowerEdge R7525<br/>AMD EPYC 7702 64-Core | User login, terminal<br/>multithread-intensive tasks | 2020.10 |
-| mewtwo | 12x3.2GHz<br/>128GB | MX-612D8A<br/>Intel(R) Xeon(R) CPU E5-1650 v4<br/>Xilinx Alveo U200 | JBOD disk pool 44TB<br/>System backup<br/>FPGA | 2018.06 |
-| lapras | 128x2.9GHz<br/>256GB | YJ Workstation Custom liquid cooling<br/>AMD Ryzen Threadripper 3990X 64-Core<br/>4xGPU nvidia GTX-5090 | Deep learning, many-core jobs | 2020.04<br/>(2026.03 GPU업그레이드) |
+| mewtwo | 12x3.2GHz<br/>128GB | MX-612D8A<br/>Intel(R) Xeon(R) CPU E5-1650 v4<br/>Xilinx Alveo U200 | JBOD disk pool 66TB<br/>System backup<br/>FPGA<br/>Cold storage (RENE archive) | 2018.06 |
+| lapras | 128x2.9GHz<br/>128GB | YJ Workstation Custom liquid cooling<br/>AMD Ryzen Threadripper 3990X 64-Core<br/>4xGPU nvidia RTX-5090 | Deep learning, many-core jobs | 2020.04<br/>(2026.03 GPU업그레이드) |
 | ho-oh | 64x3.0GHz<br/>128GB | Dell PowerEdge R7525<br/>AMD EPYC 7302 16-Core | slurm worker node | 2020.10 |
 | raikou | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
 | entei | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
 | suicune | 128x2.7GHz<br/>512GB | Dell PowerEdge R7625<br/>AMD EPYC 9334 32-Core | slurm worker node | 2023.12 |
 | jammanbo | 24x2.4GHz<br/>64GB | Dasan 파일서버<br/>Intel Xeon Silver 4510 | RAID 140TB | 2025.06 |
-| naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) | 
-| yabuon | 4x1.2GHz<br/>1GB | Raspberry Pi 3B 1.2<br/>ARM Cortex-A53 | Monitor environment<br/>temperature: DS18B20<br/>Smoke: 현대방재 단독형 화재감지기 개조 | 2026.03 |
-| mew | 4x3.5GHz<br/>16GB | 조립 데스크탑<br/>AMD Ryzen 3 2200G 4-Core | JBOD disk pool 18TB<br/>Cold storage | 2020 <br/>(2026.04 재배치) |
+| naong | 8x3.8GHz<br/>64GB | 조립 데스크탑<br/>AMD Ryzen 3 4350G 4-Core<br/>GPU nvidia GTX-1080Ti | Legacy GPU | 2020 <br/>(2026.01 재배치) |
+| yabuon | 4x1.2GHz<br/>1GB | Raspberry Pi 3B 1.2<br/>ARM Cortex-A53 | Monitor environment<br/>temperature: DS18B20 | 2026.03 |
+| indico | 8x3.7GHz<br/>6GB | 조립 데스크탑<br/>AMD Ryzen 5 3400G 4-Core<br/>Radeon Vega Graphics | Indico conference server<br/>indico.neutrino.or.kr | 2026.08 |
 
 - 2026년 1월 자원 재분배를 진행했습니다.
   - ho-oh의 alveo카드를 mewtwo로 이전
@@ -25,7 +25,10 @@
   - lapras의 4x2080ti 고장으로 4x5090으로 업그레이드
   - GPU 동작전원 이상 및 수냉펌프 시스템 문제로 2026년 3월 수리 완료.
 - 2026년 4월 Cold storage 추가, lapras 10G 연결
- 
+- 2026년 8월 클러스터 전체 융합전공 서버실로 이전
+  - Indico 서버 분리 (hep MicroK8s → 독립 데스크탑 서버)
+  - mewtwo jbod+mergerfs 재구성
+
 ## 저장공간 구성
 파일서버들 별 용도에 따라 nfs로 저장 공간을 공유합니다. 편의상 동일한 물리적 디스크이지만 디렉토리별로 각각 마운트해 사용하기도 합니다.
 - hep.lo
@@ -34,10 +37,8 @@
 - jammanbo.lo
   - Raid (140TB) -> `/store/cpnr-data`
 - mewtwo.lo
-  - JBOD disk pool (44T) -> `/store/mewtwo`
-  - archive disk (3.7T): NFS공유하지 않음. 전체 시스템의 중요한 파일들 백업 (indico자료, 웹서버 자료, 중요 설정 등)
-- mew.lo
-  - JBOD disk pool (18T) -> `/store/cpnr-archive` (RENE data cold storage)
+  - JBOD disk pool (66TB: 8TB×6 + 18TB×1) -> `/store/archive` (RENE data cold storage)
+  - archive disk (3.7T): NFS공유하지 않음. 전체 시스템의 중요한 파일들 백업 (웹서버 자료, 중요 설정 등)
 
 ## 네트워크 구성
 내부 네트워크는 데이터 전송 전용 10G, 일반 사용 및 관리용 1G로 연결했습니다.
@@ -47,23 +48,23 @@
 ```
 HEP 네트워크 구성도
 
-KREONET hep.khu.ac.kr ┐
-                 eno1 │
-      210.117.211.131 │
-   GW:210.117.211.129 │     ┌───────────────┐
-                      └─────┤ hep           │
-               enp59s0f0 ┌──┤  /users/hep   ├──┐ enp1s0f0
-      hep.lo 192.168.0.1 │  │  /users/cpnr  │  │ hep.mgmt 192.168.100.101
-                         │  │  /store/hep   │  │ hep.idrac 192.168.0.101
+KREONET hep.khu.ac.kr ┐    indico.neutrino.or.kr ┐
+                 eno1 │                  enp34s0 │
+      210.117.211.131 │          210.117.211.132 │
+   GW:210.117.211.129 │     ┌───────────────┐    │  ┌────────┐
+                      └─────┤ hep           │    └──┤ indico │
+               enp59s0f0 ┌──┤  /users/hep   ├──┐    └────────┘
+      hep.lo 192.168.0.1 │  │  /users/cpnr  │  │    
+                         │  │  /store/hep   │  │
                  ┌───────┘  │  /store/cpnr  │  └───────────────┐
       ┌─ ─ ─ ─ ─ ┴ ─ ┐      └───────────────┘               ┌─ ┴ ─ ─ ─ ─┐
    ┌──┤ Dell-10G HUB ├─[SFP+→RJ45]──────────────────────────┤ HP-1G HUB ├────────────────┐
    │  └─ ─ ─ ─ ─ ─ ┬ ┘                                      └─ ─ ─ ─ ─ ─┘                │
    │               └──────────────────────────┐                                          │
-   │                ┌────────────────┐        │              ┌─────────┐                 │
-   ├─ mewtwo.lo    ─┤ mewtwo (FPGA)  │        ├─ lugia.lo   ─┤ lugia   ├─ lugia.idrac   ─┤
-   │  192.168.0.2   │  /store/mewtwo │        │  192.168.0.4 └─────────┘  192.168.0.104  │
-   │                └────────────────┘        │              ┌─────────┐                 │
+   │                ┌─────────────────┐       │              ┌─────────┐                 │
+   ├─ mewtwo.lo    ─┤ mewtwo (FPGA)   │       ├─ lugia.lo   ─┤ lugia   ├─ lugia.idrac   ─┤
+   │  192.168.0.2   │  /store/archive │       │  192.168.0.4 └─────────┘  192.168.0.104  │
+   │                └─────────────────┘       │              ┌─────────┐                 │
    │                ┌───────────────────┐     ├─ ho-oh.lo   ─┤ ho-oh   ├─ ho-oh.idrac   ─┤
    ├─ jammanbo.lo  ─┤ jammanbo          │     │  192.168.0.3 └─────────┘  192.168.0.103  │
    │  192.168.0.10  │  /store/cpnr-data │     │                                          │
@@ -75,10 +76,7 @@ KREONET hep.khu.ac.kr ┐
                     ┌───────────────┐         │  192.168.0.7 └─────────┘  192.168.0.107  │
    ┌─ naong.lo     ─┤ naong (1080)  │         │              ┌─────────┐                 │
    │  192.168.0.9   └───────────────┘         └─ suicune.lo ─┤ suicune ├─ suicune.idrac ─┤
-   │                ┌──────────────────────┐     192.168.0.8 └─────────┘  192.168.0.108  │
-   ├─ mew.lo       ─┤ mew                  │                                             │
-   │  192.168.0.11  │  /store/cpnr-archive │                                             │
-   │                └──────────────────────┘                                             │
+   │                                             192.168.0.8 └─────────┘  192.168.0.108  │
    │                ┌───────────────┐                                                    │
    ├─ yabuon.lo    ─┤ yabuon (RP3)  │                                                    │
    │  192.168.0.201 └───────────────┘                                                    │
@@ -98,3 +96,4 @@ KREONET hep.khu.ac.kr ┐
 - 2025.06 / jammanbo 스토리지서버 도입 / 2022R1A5A1030700(한국연구재단) "중성미자정밀연구센터"
 - 2025.12 / lapras 5090 도입 / 2022R1A5A1030700(한국연구재단) "중성미자정밀연구센터"
 - 2026.04 / mew 스토리지 도입, 확장 / 2022R1A5A1030700(한국연구재단) "중성미자정밀연구센터"
+- 2026.08 / 클러스터 융합전공 서버실 이전, indico 서버 분리 / 2022R1A5A1030700(한국연구재단) "중성미자정밀연구센터"
