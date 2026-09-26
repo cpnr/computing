@@ -118,8 +118,8 @@ print(nIn, n, nIn/n*4)
 
 hostname
 
-source /store/sw/anaconda3/etc/profile.d/conda.sh
-conda activate ds4hep
+source /store/sw/miniconda3/etc/profile.d/mamba.sh
+mamba activate hep2026.01
 
 python compute_pi.py
 ```
