@@ -80,8 +80,8 @@ def render_matplotlib(arr, path=None, show=False):
     from mpl_toolkits.axes_grid1 import make_axes_locatable
     from datetime import datetime
 
-    below = np.append(np.arange(15, 25, 1.0), 25)
-    above = np.concatenate([np.arange(26, 31, 1.0), [35, 40, 70, 130, 200]])
+    below = np.concatenate([np.arange(15, 23, 1.0), np.arange(23, 25, 0.5)])
+    above = np.concatenate([np.arange(25, 27, 0.5), np.arange(27, 31, 1.0), [32, 35, 40, 50, 70]])
     levels = np.concatenate([below, above])
 
     cmap = plt.get_cmap("seismic", len(levels) - 1)
@@ -113,7 +113,7 @@ def render_matplotlib(arr, path=None, show=False):
     cax = divider.append_axes("right", size="5%", pad=0.05)
 
     cbar = fig.colorbar(cs, cax=cax, label="°C")
-    cbar.set_ticks([15, 20, 25, 30, 35, 40, 70, 130, 200])
+    cbar.set_ticks([15, 17, 20, 23, 24, 25, 26, 28, 30, 32, 35, 40, 50, 70])
 
     plt.tight_layout()
 
